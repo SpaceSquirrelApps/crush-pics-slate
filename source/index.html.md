@@ -44,8 +44,6 @@ curl https://api.crush.pics/v1/compress \
 
 ```
 
-> To authenticate add api_key field to your requests:
-
 Crush.pics API accepts HTTPS <code>POST</code> requests only. Each <code>POST</code> request needs to be a valid JSON object with mandatory field <code>api_key</code>
 
 <aside class="notice">
@@ -72,7 +70,7 @@ callback_url | empty | With the callback_url the results will be sent in POST re
 
 ## Image Upload
 
-> Example Request
+> Example Request - compress image by uploading file
 
 ```shell
 curl https://api.crush.pics/v1/compress \
@@ -87,7 +85,6 @@ curl https://api.crush.pics/v1/compress \
   "image": "DATA"
 }
 ```
-> Compress image by uploading file to API
 
 `POST https://api.crush.pics/v1/compress`
 
@@ -102,7 +99,7 @@ image | | provide image content in POST request
 
 ## Image URL
 
-> Example request
+> Example request - compress image from URL
 
 ```shell
 curl https://api.crush.pics/v1/compress \
@@ -117,8 +114,6 @@ curl https://api.crush.pics/v1/compress \
   "image_url": "http://your-website.com/images/image.png"
 }
 ```
-
-> Compress image from URL
 
 `POST https://api.crush.pics/v1/compress`
 
@@ -145,7 +140,7 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
 ```javascript
 {
   "success": true,
-  "crushed_url": "https://url-to-crushed-image.png",
+  "crushed_url": "https://api.crush.pics/download/3e2708872ead4dbdb7e911721a0bd420.png",
   "original_file_size": 426781,
   "crushed_file_size": 203187,
   "file_saved_bytes": 223594,
@@ -195,7 +190,7 @@ curl https://api.crush.pics/v1/compress \
 ```javascript
 {
   "success": true,
-  "crushed_url": "https://url-to-crushed-image.png",
+  "crushed_url": "https://api.crush.pics/download/3e2708872ead4dbdb7e911721a0bd420.png",
   "original_file_size": 426781,
   "crushed_file_size": 203187,
   "file_saved_bytes": 223594,
@@ -312,7 +307,7 @@ curl https://api.crush.pics/v1/compress \
 
   "results": {
     "small": {
-      "crushed_url": "https://url-to-crushed-image-small.png",
+      "crushed_url": "https://api.crush.pics/download/3e2708872ead4dbdb7e911721a0bd420.png",
       "original_file_size": 426781,
       "crushed_file_size": 203187,
       "file_saved_bytes": 223594,
@@ -323,7 +318,7 @@ curl https://api.crush.pics/v1/compress \
       "image_type": "image/png"
     },
     "medium": {
-      "crushed_url": "https://url-to-crushed-image-medium.png",
+      "crushed_url": "https://api.crush.pics/download/ba34f15cd34543fcbbe62c13595a086f.png",
       "original_file_size": 426781,
       "crushed_file_size": 203187,
       "file_saved_bytes": 223594,
@@ -334,7 +329,7 @@ curl https://api.crush.pics/v1/compress \
       "image_type": "image/png"
     },
     "large": {
-      "crushed_url": "https://url-to-crushed-image-large.png",
+      "crushed_url": "https://api.crush.pics/download/19805cbee6c543a78514a2e4424964e4.png",
       "original_file_size": 426781,
       "crushed_file_size": 203187,
       "file_saved_bytes": 223594,
@@ -361,7 +356,7 @@ To use multi-resize feature, you will need to add an array of objects as value t
 curl https://api.crush.pics/v1/compress \
 -X POST \
 -H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png","convert": {"format": "jpeg", "background": "#ffffff"} }'
+--form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png",   "resize": [{"id": "small", "width": "150", "height": "150", "quality": 65 }, {"id": "medium", "width": "300", "height": "300", "quality": 75 }, {"id": "large", "width": "600", "height": "600", "lossy": false } ] }'
 ```
 
 ```json
@@ -386,8 +381,7 @@ curl https://api.crush.pics/v1/compress \
       "width": "600",
       "height": "600",
       "lossy": false
-    },
-
+    }
   ]
 }
 ```
