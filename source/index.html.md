@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='#'>Sign Up for a API Key</a>
+  - <a href='#'>Sign Up for a API token</a>
 
 includes:
   - errors
@@ -18,210 +18,296 @@ search: true
 
 > API Endpoint
 
-```javascript
+```
 https://api.crush.pics
 ```
 
 Welcome to the Crush.pics API. This API allows you to compress and optimize <code>JPEG</code>, <code>PNG</code>, <code>GIF</code> and <code>SVG</code> images.
 
-To use Crush.pics API, you need to sign up for Crush.pics API services and obtain your <b>API key</b>. Once you have setup your Account, you can start using Crush.pics API.
+To use Crush.pics API, you need to sign up for Crush.pics API services and obtain your <b>API token</b>. Once you have setup your Account, you can start using Crush.pics API.
 
 # Authentication
 
 > Example request
 
 ```shell
-curl https://api.crush.pics/v1/compress \
--X POST
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png" }'
+curl -X "POST" "https://api.crush.pics/v1/compress" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: application/json' \
+     -H 'Authorization: Bearer your-api-token' \
+     -F "image_url=https://your-website.com/images/image.png" \
+     -F "compression_type=lossy" \
+     -F "compression_level=65"
 ```
 
 ```json
 {
-  "api_key": "your-api-key",
-  "image_url": "http://your-website.com/images/image.png"
+  "image_url": "http://your-website.com/images/image.png",
+  "compression_type": "lossy",
+  "compression_level": "65"
 }
-
 ```
 
-Crush.pics API accepts HTTPS <code>POST</code> requests only. Each <code>POST</code> request needs to be a valid JSON object with mandatory field <code>api_key</code>
+Crush.pics API accepts HTTPS <code>POST</code>, <code>PATCH</code>, <code>GET</code> requests. Each request needs to be a valid JSON object with mandatory headers <code>Authorization</code>, <code>Accept</code> and <code>Content-Type</code>.
 
 <aside class="notice">
 Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP requests will be rejected.
 </aside>
 
-# Image compression
+# Image compression (Synchronously)
 
 You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.
 
-
 `POST https://api.crush.pics/v1/compress`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-api_key |  | provide your unique API key
-image | | provide image content in POST request
-image_url |  | provide <code>URL</code> to the image you want to compress
-lossy | true | lossy / lossless compression switch
-quality | 80 | lossy compression quality settings (1-100)
-callback_url | empty | With the callback_url the results will be sent in POST request to the Callback URL. If it's not set, results will be returned in the response body
 
 ## Image Upload
 
 > Example Request - compress image by uploading file
 
 ```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
---form data='{ "api_key": "your-api-key" }' \
---form upload=@unoptimized-image.jpg
+curl -X "POST" "https://api.crush.pics/v1/compress" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: multipart/form-data; boundary=Fu0hjwe' \
+     -H 'Authorization: Bearer your-api-token' \
+     -F "file=@unoptimized-image.jpg" \
+     -F "compression_type=lossy" \
+     -F "compression_level=65" \
 ```
 
 ```json
 {
-  "api_key": "your-api-key",
-  "image": "DATA"
+  "file": "@unoptimized-image.jpg",
+  "compression_type": "lossy",
+  "compression_level": 65
 }
 ```
 
-`POST https://api.crush.pics/v1/compress`
-
-Optimise image with direct upload in POST request
-
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-api_key |  | provide your unique API key
-image | | provide image content in POST request
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+file | yes | | provide image content in POST request
+compression_type | no | fallback to account settings | lossy / lossless compression switch
+compression_level | no | fallback to account settings | lossy compression quality settings (1-100)
+resize | no | [] | an array of styles to resize image. Each object contains `style` (string, user-defined style name), `strategy` (string), `width` (integer) and `height` (integer) attributes
 
 ## Image URL
+
+Optimise image by provide an URL to the image you want to optimise.
 
 > Example request - compress image from URL
 
 ```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
--H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png" }'
+curl -X "POST" "https://api.crush.pics/v1/compress" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: application/json' \
+     -H 'Authorization: Bearer your-api-token' \
+     -F "image_url=https://your-website.com/images/image.png" \
+     -F "compression_type=lossy" \
+     -F "compression_level=65"
 ```
 
 ```json
 {
-  "api_key": "your-api-key",
-  "image_url": "http://your-website.com/images/image.png"
+  "image_url": "http://your-website.com/images/image.png",
+  "compression_type": "lossy",
+  "compression_level": 65
 }
 ```
 
-`POST https://api.crush.pics/v1/compress`
-
-Optimise image by provide an URL to the image you want to optimise.
-
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-api_key |  | provide your unique API key
-image_url |  | provide <code>URL</code> to the image you want to compress
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+image_url | yes |  | provide <code>URL</code> to the image you want to compress
+compression_type | no | fallback to account settings | lossy / lossless compression switch
+compression_level | no | fallback to account settings | lossy compression quality settings (1-100)
+resize | no | [] | an array of styles to resize image. Each object contains `style` (string, user-defined style name), `strategy` (string), `width` (integer) and `height` (integer) attributes
 
-<aside class="notice">
-If HTTP Basic Authentication is enabled on your webserver simply include the username and password as part of the image URL like so: <code>https://username:password@my-website.com/images/image.png</code>
-</aside>
-
-
-# Response
+## Response
 
 > Example response
 
 > HTTP/1.1 200 OK
 
-```javascript
+```json
 {
-  "success": true,
-  "crushed_url": "https://api.crush.pics/download/3e2708872ead4dbdb7e911721a0bd420.png",
-  "original_file_size": 426781,
-  "crushed_file_size": 203187,
-  "file_saved_bytes": 223594,
-  "original_width": 640,
-  "original_height": 480,
-  "image_type": "image/png"
+  "original_image": {
+    "id": 5,
+    "origin": "file",
+    "size": 297412,
+    "file_type": "image/png",
+    "filename": "photo.png",
+    "status": "completed",
+    "created_at": "2018-07-09T13:07:42.943Z",
+    "updated_at": "2018-07-09T13:07:46.074Z",
+    "link": "https://api.crush.pics/v1/files/X8KxL3cD1viTBasepBwSL4Tz/photo.png",
+    "optimized_images": [
+      {
+        "id": 4,
+        "status": "enqueued",
+        "compression_type": "lossless",
+        "compression_level": 0,
+        "style": "icon",
+        "width": 150,
+        "height": 150,
+        "link": "https://api.crush.pics/v1/files/ZdcSBAk1m4XMeH9KNvSmWFNN/photo.png",
+        "size": 465,
+        "file_type": "image/png",
+        "filename": "photo.png",
+        "created_at": "2018-07-09T13:07:43.005Z",
+        "updated_at": "2018-07-09T13:07:46.069Z"
+      }
+    ]
+  }
 }
 ```
 
 Response body will have optimization results containing a success property, original file size, compressed file size, amount of savings, original image dimensions (in pixels) and optimized image URL.
 
-# Callback URL
+# Image compression (Asynchronously, respond with webhooks)
 
+You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.
 
-> Example request
+`POST https://api.crush.pics/v1/original_images`
+
+## Image Upload
+
+Optimise image with direct upload in POST request
+
+> Example Request - compress image by uploading file
 
 ```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
--H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png", "callback_url": "http://your-website.com/optimisation_results" }'
+curl -X "POST" "https://api.crush.pics/v1/original_images" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: multipart/form-data; boundary=Fu0hjwe' \
+     -H 'Authorization: Bearer your-api-token' \
+     -F "file=@unoptimized-image.jpg" \
+     -F "compression_type=lossy" \
+     -F "compression_level=65" \
 ```
 
 ```json
 {
-  "api_key": "your-api-key",
-  "image_url": "http://your-website.com/images/image.png",
-  "callback_url": "http://your-website.com/optimisation_results"
+  "file": "@unoptimized-image.jpg",
+  "compression_type": "lossy",
+  "compression_level": 65
 }
-
 ```
+
+### Query Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+file | yes | | provide image content in POST request
+compression_type | no | fallback to account settings | lossy / lossless compression switch
+compression_level | no | fallback to account settings | lossy compression quality settings (1-100)
+resize | no | [] | an array of styles to resize image. Each object contains `style` (string, user-defined style name), `strategy` (string), `width` (integer) and `height` (integer) attributes
+
+## Image URL
+
+Optimise image by provide an URL to the image you want to optimise.
+
+> Example request - compress image from URL
+
+```shell
+curl -X "POST" "https://api.crush.pics/v1/original_images" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: application/json' \
+     -H 'Authorization: Bearer your-api-token' \
+     -F "image_url=https://your-website.com/images/image.png" \
+     -F "compression_type=lossy" \
+     -F "compression_level=65"
+```
+
+```json
+{
+  "image_url": "http://your-website.com/images/image.png",
+  "compression_type": "lossy",
+  "compression_level": 65
+}
+```
+
+### Query Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+image_url | yes |  | provide <code>URL</code> to the image you want to compress
+compression_type | no | fallback to account settings | lossy / lossless compression switch
+compression_level | no | fallback to account settings | lossy compression quality settings (1-100)
+resize | no | [] | an array of styles to resize image. Each object contains `style` (string, user-defined style name), `strategy` (string), `width` (integer) and `height` (integer) attributes
+
+<aside class="notice">
+If HTTP Basic Authentication is enabled on your webserver simply include the username and password as part of the image URL like so: <code>https://username:password@my-website.com/images/image.png</code>
+</aside>
+
+## Response
 
 > Example response
 
 > HTTP/1.1 200 OK
 
-```javascript
+```json
 {
-  "id": "ef23f35dbf2645f990ff224d50597d85"
+  "original_image": {
+    "id": 5,
+    "origin": "file",
+    "size": 297412,
+    "file_type": "image/png",
+    "filename": "photo.png",
+    "status": "enqueued",
+    "created_at": "2018-06-29T15:52:22.589Z",
+    "updated_at": "2018-06-29T15:52:22.596Z",
+    "link": "https://api.crush.pics/v1/files/LX8Xhv3Z2T2dQDSRnrC3UBxg/photo.png"
+  }
 }
 ```
 
-> Response posted to the Callback URL once compression is complete:
-
-> HTTP/1.1 200 OK
-
-```javascript
-{
-  "success": true,
-  "crushed_url": "https://api.crush.pics/download/3e2708872ead4dbdb7e911721a0bd420.png",
-  "original_file_size": 426781,
-  "crushed_file_size": 203187,
-  "file_saved_bytes": 223594,
-  "original_width": 640,
-  "original_height": 480,
-  "image_type": "image/png"
-}
-```
-
-When you set <code>callback_url</code> parameter, unique image id will be returned in the response body and connection will be terminated immediately. Once compression is finished, Crush.pics API will send a POST request to the <code>callback_url</code> specified in your request. Image ID in the response will reflect the image ID in the results posted to your Callback URL.
+Response body will contain a set of basic image attributes e.g `id`, `size`, `filename`, `status` and etc. Using the image `id` you can fetch results of image optimization and get compressed/resized images.
 
 # Image Resizing
 
 > Example request
 
 ```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
--H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png", "resize": {"width": 320, "height": 100, "strategy": "crop"} }'
+curl -X "POST" "https://api.crush.pics/v1/compress" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: multipart/form-data; boundary=ArRCoq7' \
+     -H 'Authorization: Bearer your-api-token' \
+     -d $'{
+  "origin": "file",
+  "compression_type": "lossy",
+  "resize[][width]": "100",
+  "compression_level": "65",
+  "image_url": "http://your-website.com/images/image.png",
+  "resize[][style]": "thumb",
+  "resize[][height]": "100",
+  "resize[][width]": "320",
+  "resize[][height]": "crop",
+  "resize[][style]": "pico",
+  "resize[][height]": "25",
+  "resize[][width]": "80",
+  "resize[][height]": "crop",
+}'
 ```
 
 ```json
 {
-  "api_key": "your-api-key",
   "image_url": "http://your-website.com/images/image.png",
-  "resize": {
-    "width": 320,
-    "height": 100,
-    "strategy": "crop"
-  }
+  "resize": [
+    {
+      "width": 320,
+      "height": 100,
+      "strategy": "crop",
+      "style": "thumb"
+    },
+    {
+      "width": 80,
+      "height": 25,
+      "strategy": "crop",
+      "style": "pico"
+    }
+  ]
 }
 
 ```
@@ -432,5 +518,3 @@ curl https://api.crush.pics/v1/compress \
 ```
 
 If you want auto-rotate images using EXIF orientation tags, add <code>"auto_rotate": true</code> to your request
-
-
