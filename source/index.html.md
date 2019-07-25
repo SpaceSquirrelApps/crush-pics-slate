@@ -28,6 +28,18 @@ To use Crush.pics API, you need to sign up for Crush.pics API services and obtai
 
 # Authentication
 
+> Endpoint
+
+```
+https://api.crush.pics/v1/compress
+```
+
+> HTTP method
+
+```
+POST
+```
+
 > Example request
 
 ```shell
@@ -58,7 +70,17 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 
 You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.
 
-`POST https://api.crush.pics/v1/compress`
+> Endpoint
+
+```
+https://api.crush.pics/v1/compress
+```
+
+> HTTP method
+
+```
+POST
+```
 
 ## Image Upload
 
@@ -87,7 +109,7 @@ curl -X "POST" "https://api.crush.pics/v1/compress" \
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 file | yes | | provide image content in POST request
-compression_type | no | fallback to account settings | lossy / lossless compression switch
+compression_type | no | fallback to account settings | `lossy` / `lossless` / `balanced` compression switch
 compression_level | no | fallback to account settings | lossy compression quality settings (1-100)
 resize | no | [] | an array of styles to resize image. Each object contains `style` (string, user-defined style name), `strategy` (string), `width` (integer) and `height` (integer) attributes
 
@@ -120,7 +142,7 @@ curl -X "POST" "https://api.crush.pics/v1/compress" \
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 image_url | yes |  | provide <code>URL</code> to the image you want to compress
-compression_type | no | fallback to account settings | lossy / lossless compression switch
+compression_type | no | fallback to account settings | `lossy` / `lossless` / `balanced` compression switch
 compression_level | no | fallback to account settings | lossy compression quality settings (1-100)
 resize | no | [] | an array of styles to resize image. Each object contains `style` (string, user-defined style name), `strategy` (string), `width` (integer) and `height` (integer) attributes
 
@@ -134,6 +156,8 @@ resize | no | [] | an array of styles to resize image. Each object contains `sty
 {
   "original_image": {
     "id": 5,
+    "compression_type": "lossy",
+    "compression_level": 65,
     "origin": "file",
     "size": 297412,
     "file_type": "image/png",
@@ -169,7 +193,17 @@ Response body will have optimization results containing a success property, orig
 
 You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.
 
-`POST https://api.crush.pics/v1/original_images`
+> Endpoint
+
+```
+https://api.crush.pics/v1/original_images
+```
+
+> HTTP method
+
+```
+POST
+```
 
 ## Image Upload
 
@@ -251,6 +285,8 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
 {
   "original_image": {
     "id": 5,
+    "compression_type": "lossy",
+    "compression_level": 65,
     "origin": "file",
     "size": 297412,
     "file_type": "image/png",
@@ -270,7 +306,7 @@ Response body will contain a set of basic image attributes e.g `id`, `size`, `fi
 > Example request
 
 ```shell
-curl -X "POST" "https://api.crush.pics/v1/compress" \
+curl -X "POST" "https://api.crush.pics/v1/original_images" \
      -H 'Accept: application/json' \
      -H 'Content-Type: multipart/form-data; boundary=ArRCoq7' \
      -H 'Authorization: Bearer your-api-token' \
@@ -310,3 +346,69 @@ curl -X "POST" "https://api.crush.pics/v1/compress" \
 ```
 
 You can use Crush.pics API resizing option to create thumbnails or preview images for your applications. Crush.pics will first resize the given image and then optimize it. The resize option needs a few parameters to be passed, such as the desired width and/or height, as well as a mandatory strategy property.
+
+**Note**: Crush.pics API does not support resizing only. All resizing operations perform on compressed images.
+
+
+# Dashboard
+
+> Endpoint
+
+```
+https://api.crush.pics/v1/dashboard
+```
+
+> HTTP method
+
+```
+GET
+```
+
+> Example response
+
+> HTTP/1.1 200 OK
+
+```json
+{
+  "stats": {
+    "original_images_count": 475,
+    "optimized_images_count": 475,
+    "consumption": {
+      "type": "six_months",
+      "data": [
+        {
+          "origin": "file",
+          "size": null,
+          "period": 2
+        },
+        {
+          "origin": "shopify_article",
+          "size": null,
+          "period": 2
+        },
+        {
+          "origin": "file",
+          "size": null,
+          "period": 3
+        },
+        {
+          "origin": "file",
+          "size": null,
+          "period": 6
+        },
+        {
+          "origin": "shopify",
+          "size": 1858202,
+          "period": 7
+        },
+        {
+          "origin": "file",
+          "size": null,
+          "period": 7
+        }
+      ]
+    }
+  }
+}
+```
+
