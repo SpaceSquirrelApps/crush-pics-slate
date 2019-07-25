@@ -314,38 +314,6 @@ curl -X "POST" "https://api.crush.pics/v1/compress" \
 
 You can use Crush.pics API resizing option to create thumbnails or preview images for your applications. Crush.pics will first resize the given image and then optimize it. The resize option needs a few parameters to be passed, such as the desired width and/or height, as well as a mandatory strategy property.
 
-# Image Conversion
-
-> Example request
-
-```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
--H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png","convert": {"format": "jpeg", "background": "#ffffff"} }'
-```
-
-```json
-{
-  "api_key": "your-api-key",
-  "image_url": "http://your-website.com/images/image.png",
-  "convert": {
-    "format": "jpeg",
-    "background": "#ffffff"
-  }
-}
-
-```
-
-If you want to convert image to different type/format, you can do it by passing <code>convert</code> object in your request JSON.
-
-### Convert Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-format |  | Desired image format you wish to convert your image into. This can accept one of the following values: <code>jpeg</code>, <code>png</code> or <code>gif</code>.
-background | #ffffff | If you convert from transparent file formats (PNG or GIF) into fully opaque format like JPEG, you need to specify background color. The background property can be passed in HEX notation (for eg: <code>"#000000"</code>).
-
 # Multiple Images
 
 > Example request
@@ -474,47 +442,3 @@ curl https://api.crush.pics/v1/compress \
 By default, each resize object inherits certain values from the top level of the request - namely the values of the lossy, quality. However, those values can be overridden per resize object. For example, when requesting JPEG outputs you can specify different quality values per each output.
 
 Below are several examples of overriding global request properties within resize objects:
-
-# Preserve Metadata
-
-> Example request
-
-```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
--H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png", "preserve_meta": [ "orientation", "date", "copyright", "profile" ] }'
-```
-
-```json
-{
-  "api_key": "your-api-key",
-  "image_url": "http://your-website.com/images/image.png",
-  "preserve_meta": [ "orientation", "date", "copyright", "profile" ]
-}
-```
-
-By default Crush.pics API will strip all the metadata found in an image to make the image file as small as it is possible, and in both lossy and lossless modes. Entries like EXIF, XMP and IPTC tags, colour profile information, etc. will be stripped altogether.
-
-In order to preserve metadata, add an additional preserve_meta array to your JSON request with list of properties you want to preserve
-
-# Image Orientation
-
-> Example request
-
-```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
--H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png", "auto_rotate": "true" }'
-```
-
-```json
-{
-  "api_key": "your-api-key",
-  "image_url": "http://your-website.com/images/image.png",
-  "auto_rotate": "true"
-}
-```
-
-If you want auto-rotate images using EXIF orientation tags, add <code>"auto_rotate": true</code> to your request
