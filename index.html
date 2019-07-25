@@ -257,26 +257,7 @@
             <a href="#image-resizing" class="toc-h1 toc-link" data-title="image-resizing">Image Resizing</a>
           </li>
           <li>
-            <a href="#image-conversion" class="toc-h1 toc-link" data-title="image-conversion">Image Conversion</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#convert-parameters" class="toc-h2 toc-link" data-title="convert-parameters">Convert Parameters</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#multiple-images" class="toc-h1 toc-link" data-title="multiple-images">Multiple Images</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#resize-object-parameters" class="toc-h2 toc-link" data-title="resize-object-parameters">Resize object parameters</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#preserve-metadata" class="toc-h1 toc-link" data-title="preserve-metadata">Preserve Metadata</a>
-          </li>
-          <li>
-            <a href="#image-orientation" class="toc-h1 toc-link" data-title="image-orientation">Image Orientation</a>
+            <a href="#dashboard" class="toc-h1 toc-link" data-title="dashboard">Dashboard</a>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
@@ -299,6 +280,16 @@
 
 <p>To use Crush.pics API, you need to sign up for Crush.pics API services and obtain your <b>API token</b>. Once you have setup your Account, you can start using Crush.pics API.</p>
 <h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>Endpoint</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://api.crush.pics/v1/compress
+</code></pre>
+<blockquote>
+<p>HTTP method</p>
+</blockquote>
+<pre class="highlight plaintext"><code>POST
+</code></pre>
 <blockquote>
 <p>Example request</p>
 </blockquote>
@@ -323,8 +314,16 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <h1 id='image-compression-synchronously'>Image compression (Synchronously)</h1>
 <p>You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.</p>
 
-<p><code>POST https://api.crush.pics/v1/compress</code></p>
-<h2 id='image-upload'>Image Upload</h2>
+<blockquote>
+<p>Endpoint</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://api.crush.pics/v1/compress
+</code></pre>
+<blockquote>
+<p>HTTP method</p>
+</blockquote>
+<pre class="highlight plaintext"><code>POST
+</code></pre><h2 id='image-upload'>Image Upload</h2>
 <blockquote>
 <p>Example Request - compress image by uploading file</p>
 </blockquote>
@@ -359,7 +358,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <td>compression_type</td>
 <td>no</td>
 <td>fallback to account settings</td>
-<td>lossy / lossless compression switch</td>
+<td><code>lossy</code> / <code>lossless</code> / <code>balanced</code> compression switch</td>
 </tr>
 <tr>
 <td>compression_level</td>
@@ -411,7 +410,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <td>compression_type</td>
 <td>no</td>
 <td>fallback to account settings</td>
-<td>lossy / lossless compression switch</td>
+<td><code>lossy</code> / <code>lossless</code> / <code>balanced</code> compression switch</td>
 </tr>
 <tr>
 <td>compression_level</td>
@@ -435,6 +434,8 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"original_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
     </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">297412</span><span class="p">,</span><span class="w">
     </span><span class="s2">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
@@ -467,8 +468,16 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <h1 id='image-compression-asynchronously-respond-with-webhooks'>Image compression (Asynchronously, respond with webhooks)</h1>
 <p>You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.</p>
 
-<p><code>POST https://api.crush.pics/v1/original_images</code></p>
-<h2 id='image-upload-2'>Image Upload</h2>
+<blockquote>
+<p>Endpoint</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://api.crush.pics/v1/original_images
+</code></pre>
+<blockquote>
+<p>HTTP method</p>
+</blockquote>
+<pre class="highlight plaintext"><code>POST
+</code></pre><h2 id='image-upload-2'>Image Upload</h2>
 <p>Optimise image with direct upload in POST request</p>
 
 <blockquote>
@@ -585,6 +594,8 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"original_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
     </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">297412</span><span class="p">,</span><span class="w">
     </span><span class="s2">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
@@ -601,12 +612,11 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
 <blockquote>
 <p>Example request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/compress"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/original_images"</span> <span class="se">\</span>
      -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
      -H <span class="s1">'Content-Type: multipart/form-data; boundary=ArRCoq7'</span> <span class="se">\</span>
      -H <span class="s1">'Authorization: Bearer your-api-token'</span> <span class="se">\</span>
      -d <span class="s1">$'{
-  "origin": "file",
   "compression_type": "lossy",
   "resize[][width]": "100",
   "compression_level": "65",
@@ -626,13 +636,11 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
       </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crop"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"thumb"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
       </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crop"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pico"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -640,194 +648,66 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
 
 </span></code></pre>
 <p>You can use Crush.pics API resizing option to create thumbnails or preview images for your applications. Crush.pics will first resize the given image and then optimize it. The resize option needs a few parameters to be passed, such as the desired width and/or height, as well as a mandatory strategy property.</p>
-<h1 id='image-conversion'>Image Conversion</h1>
+
+<p><strong>Note</strong>: Crush.pics API does not support resizing only. All resizing operations perform on compressed images.</p>
+<h1 id='dashboard'>Dashboard</h1>
 <blockquote>
-<p>Example request</p>
+<p>Endpoint</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
--X POST <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
---form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png","convert": {"format": "jpeg", "background": "#ffffff"} }'</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"convert"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jpeg"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"background"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>If you want to convert image to different type/format, you can do it by passing <code>convert</code> object in your request JSON.</p>
-<h3 id='convert-parameters'>Convert Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>format</td>
-<td></td>
-<td>Desired image format you wish to convert your image into. This can accept one of the following values: <code>jpeg</code>, <code>png</code> or <code>gif</code>.</td>
-</tr>
-<tr>
-<td>background</td>
-<td>#ffffff</td>
-<td>If you convert from transparent file formats (PNG or GIF) into fully opaque format like JPEG, you need to specify background color. The background property can be passed in HEX notation (for eg: <code>&quot;#000000&quot;</code>).</td>
-</tr>
-</tbody></table>
-<h1 id='multiple-images'>Multiple Images</h1>
+<pre class="highlight plaintext"><code>https://api.crush.pics/v1/dashboard
+</code></pre>
 <blockquote>
-<p>Example request</p>
+<p>HTTP method</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
--X POST <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
---form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png","convert": {"format": "jpeg", "background": "#ffffff"} }'</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"small"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"medium"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
+<pre class="highlight plaintext"><code>GET
+</code></pre>
 <blockquote>
-<p>Example response:</p>
+<p>Example response</p>
 
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="s2">"success"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-
-  <span class="s2">"results"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"small"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"crushed_url"</span><span class="p">:</span> <span class="s2">"https://api.crush.pics/download/3e2708872ead4dbdb7e911721a0bd420.png"</span><span class="p">,</span>
-      <span class="s2">"original_file_size"</span><span class="p">:</span> <span class="mi">426781</span><span class="p">,</span>
-      <span class="s2">"crushed_file_size"</span><span class="p">:</span> <span class="mi">203187</span><span class="p">,</span>
-      <span class="s2">"file_saved_bytes"</span><span class="p">:</span> <span class="mi">223594</span><span class="p">,</span>
-      <span class="s2">"original_width"</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span>
-      <span class="s2">"original_height"</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
-      <span class="s2">"crushed_width"</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
-      <span class="s2">"crushed_height"</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
-      <span class="s2">"image_type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
-    <span class="p">},</span>
-    <span class="s2">"medium"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"crushed_url"</span><span class="p">:</span> <span class="s2">"https://api.crush.pics/download/ba34f15cd34543fcbbe62c13595a086f.png"</span><span class="p">,</span>
-      <span class="s2">"original_file_size"</span><span class="p">:</span> <span class="mi">426781</span><span class="p">,</span>
-      <span class="s2">"crushed_file_size"</span><span class="p">:</span> <span class="mi">203187</span><span class="p">,</span>
-      <span class="s2">"file_saved_bytes"</span><span class="p">:</span> <span class="mi">223594</span><span class="p">,</span>
-      <span class="s2">"original_width"</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span>
-      <span class="s2">"original_height"</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
-      <span class="s2">"crushed_width"</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-      <span class="s2">"crushed_height"</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-      <span class="s2">"image_type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
-    <span class="p">},</span>
-    <span class="s2">"large"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"crushed_url"</span><span class="p">:</span> <span class="s2">"https://api.crush.pics/download/19805cbee6c543a78514a2e4424964e4.png"</span><span class="p">,</span>
-      <span class="s2">"original_file_size"</span><span class="p">:</span> <span class="mi">426781</span><span class="p">,</span>
-      <span class="s2">"crushed_file_size"</span><span class="p">:</span> <span class="mi">203187</span><span class="p">,</span>
-      <span class="s2">"file_saved_bytes"</span><span class="p">:</span> <span class="mi">223594</span><span class="p">,</span>
-      <span class="s2">"original_width"</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span>
-      <span class="s2">"original_height"</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
-      <span class="s2">"crushed_width"</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
-      <span class="s2">"crushed_height"</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
-      <span class="s2">"image_type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre>
-<p>Crush.pics API allows you to upload a single image and get back up to ten separate sizes, incorporating different resizing strategies, within a single response.</p>
-
-<p>To use multi-resize feature, you will need to add an array of objects as value to the resize param. Each object must contain an unique id, together with a strategy, and the parameters specific to that strategy. The id can either be a string or a number, bearing in mind that numbers will get coerced to a string for the response. On right, you can see example multi-resize object requesting three different sizes</p>
-<h2 id='resize-object-parameters'>Resize object parameters</h2>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
--X POST <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
---form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png",   "resize": [{"id": "small", "width": "150", "height": "150", "quality": 65 }, {"id": "medium", "width": "300", "height": "300", "quality": 75 }, {"id": "large", "width": "600", "height": "600", "lossy": false } ] }'</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"small"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"medium"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lossy"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"original_images_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">475</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"optimized_images_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">475</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"consumption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"six_months"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopify_article"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopify"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1858202</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>By default, each resize object inherits certain values from the top level of the request - namely the values of the lossy, quality. However, those values can be overridden per resize object. For example, when requesting JPEG outputs you can specify different quality values per each output.</p>
-
-<p>Below are several examples of overriding global request properties within resize objects:</p>
-<h1 id='preserve-metadata'>Preserve Metadata</h1>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
--X POST <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
---form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png", "preserve_meta": [ "orientation", "date", "copyright", "profile" ] }'</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"preserve_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"orientation"</span><span class="p">,</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"copyright"</span><span class="p">,</span><span class="w"> </span><span class="s2">"profile"</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>By default Crush.pics API will strip all the metadata found in an image to make the image file as small as it is possible, and in both lossy and lossless modes. Entries like EXIF, XMP and IPTC tags, colour profile information, etc. will be stripped altogether.</p>
-
-<p>In order to preserve metadata, add an additional preserve_meta array to your JSON request with list of properties you want to preserve</p>
-<h1 id='image-orientation'>Image Orientation</h1>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
--X POST <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
---form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png", "auto_rotate": "true" }'</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"auto_rotate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>If you want auto-rotate images using EXIF orientation tags, add <code>&quot;auto_rotate&quot;: true</code> to your request</p>
-<h1 id='errors'>Errors</h1>
+</span></code></pre><h1 id='errors'>Errors</h1>
 <p>The Crush.pics API uses the following error codes:</p>
 
 <table><thead>
