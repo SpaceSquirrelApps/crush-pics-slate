@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;json&quot;,&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,10 +211,8 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
+              <a href="#" data-language-name="json">json</a>
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,112 +220,446 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#image-compression-synchronously" class="toc-h1 toc-link" data-title="image-compression-synchronously">Image compression (Synchronously)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#image-upload" class="toc-h2 toc-link" data-title="image-upload">Image Upload</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#image-url" class="toc-h2 toc-link" data-title="image-url">Image URL</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#response" class="toc-h2 toc-link" data-title="response">Response</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#image-compression-asynchronously-respond-with-webhooks" class="toc-h1 toc-link" data-title="image-compression-asynchronously-respond-with-webhooks">Image compression (Asynchronously, respond with webhooks)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#image-upload-2" class="toc-h2 toc-link" data-title="image-upload">Image Upload</a>
+                  </li>
+                  <li>
+                    <a href="#image-url-2" class="toc-h2 toc-link" data-title="image-url">Image URL</a>
+                  </li>
+                  <li>
+                    <a href="#response-2" class="toc-h2 toc-link" data-title="response">Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#image-resizing" class="toc-h1 toc-link" data-title="image-resizing">Image Resizing</a>
+          </li>
+          <li>
+            <a href="#image-conversion" class="toc-h1 toc-link" data-title="image-conversion">Image Conversion</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#convert-parameters" class="toc-h2 toc-link" data-title="convert-parameters">Convert Parameters</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#multiple-images" class="toc-h1 toc-link" data-title="multiple-images">Multiple Images</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#resize-object-parameters" class="toc-h2 toc-link" data-title="resize-object-parameters">Resize object parameters</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#preserve-metadata" class="toc-h1 toc-link" data-title="preserve-metadata">Preserve Metadata</a>
+          </li>
+          <li>
+            <a href="#image-orientation" class="toc-h1 toc-link" data-title="image-orientation">Image Orientation</a>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='#'>Sign Up for a API token</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://api.crush.pics
+</code></pre>
+<p>Welcome to the Crush.pics API. This API allows you to compress and optimize <code>JPEG</code>, <code>PNG</code>, <code>GIF</code> and <code>SVG</code> images.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>To use Crush.pics API, you need to sign up for Crush.pics API services and obtain your <b>API token</b>. Once you have setup your Account, you can start using Crush.pics API.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Example request</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/compress"</span> <span class="se">\</span>
+     -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Authorization: Bearer your-api-token'</span> <span class="se">\</span>
+     -F <span class="s2">"image_url=https://your-website.com/images/image.png"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_type=lossy"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_level=65"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Crush.pics API accepts HTTPS <code>POST</code>, <code>PATCH</code>, <code>GET</code> requests. Each request needs to be a valid JSON object with mandatory headers <code>Authorization</code>, <code>Accept</code> and <code>Content-Type</code>.</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP requests will be rejected.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='image-compression-synchronously'>Image compression (Synchronously)</h1>
+<p>You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
+<p><code>POST https://api.crush.pics/v1/compress</code></p>
+<h2 id='image-upload'>Image Upload</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example Request - compress image by uploading file</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/compress"</span> <span class="se">\</span>
+     -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: multipart/form-data; boundary=Fu0hjwe'</span> <span class="se">\</span>
+     -H <span class="s1">'Authorization: Bearer your-api-token'</span> <span class="se">\</span>
+     -F <span class="s2">"file=@unoptimized-image.jpg"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_type=lossy"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_level=65"</span> <span class="se">\</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@unoptimized-image.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>yes</td>
+<td></td>
+<td>provide image content in POST request</td>
+</tr>
+<tr>
+<td>compression_type</td>
+<td>no</td>
+<td>fallback to account settings</td>
+<td>lossy / lossless compression switch</td>
+</tr>
+<tr>
+<td>compression_level</td>
+<td>no</td>
+<td>fallback to account settings</td>
+<td>lossy compression quality settings (1-100)</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>no</td>
+<td>[]</td>
+<td>an array of styles to resize image. Each object contains <code>style</code> (string, user-defined style name), <code>strategy</code> (string), <code>width</code> (integer) and <code>height</code> (integer) attributes</td>
+</tr>
+</tbody></table>
+<h2 id='image-url'>Image URL</h2>
+<p>Optimise image by provide an URL to the image you want to optimise.</p>
+
+<blockquote>
+<p>Example request - compress image from URL</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/compress"</span> <span class="se">\</span>
+     -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Authorization: Bearer your-api-token'</span> <span class="se">\</span>
+     -F <span class="s2">"image_url=https://your-website.com/images/image.png"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_type=lossy"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_level=65"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image_url</td>
+<td>yes</td>
+<td></td>
+<td>provide <code>URL</code> to the image you want to compress</td>
+</tr>
+<tr>
+<td>compression_type</td>
+<td>no</td>
+<td>fallback to account settings</td>
+<td>lossy / lossless compression switch</td>
+</tr>
+<tr>
+<td>compression_level</td>
+<td>no</td>
+<td>fallback to account settings</td>
+<td>lossy compression quality settings (1-100)</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>no</td>
+<td>[]</td>
+<td>an array of styles to resize image. Each object contains <code>style</code> (string, user-defined style name), <code>strategy</code> (string), <code>width</code> (integer) and <code>height</code> (integer) attributes</td>
+</tr>
+</tbody></table>
+<h2 id='response'>Response</h2>
+<blockquote>
+<p>Example response</p>
+
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"original_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">297412</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-09T13:07:42.943Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-09T13:07:46.074Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.crush.pics/v1/files/X8KxL3cD1viTBasepBwSL4Tz/photo.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"optimized_images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enqueued"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossless"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"icon"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.crush.pics/v1/files/ZdcSBAk1m4XMeH9KNvSmWFNN/photo.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo.png"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-09T13:07:43.005Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-09T13:07:46.069Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p>Response body will have optimization results containing a success property, original file size, compressed file size, amount of savings, original image dimensions (in pixels) and optimized image URL.</p>
+<h1 id='image-compression-asynchronously-respond-with-webhooks'>Image compression (Asynchronously, respond with webhooks)</h1>
+<p>You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.</p>
+
+<p><code>POST https://api.crush.pics/v1/original_images</code></p>
+<h2 id='image-upload-2'>Image Upload</h2>
+<p>Optimise image with direct upload in POST request</p>
+
+<blockquote>
+<p>Example Request - compress image by uploading file</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/original_images"</span> <span class="se">\</span>
+     -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: multipart/form-data; boundary=Fu0hjwe'</span> <span class="se">\</span>
+     -H <span class="s1">'Authorization: Bearer your-api-token'</span> <span class="se">\</span>
+     -F <span class="s2">"file=@unoptimized-image.jpg"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_type=lossy"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_level=65"</span> <span class="se">\</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@unoptimized-image.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>yes</td>
+<td></td>
+<td>provide image content in POST request</td>
+</tr>
+<tr>
+<td>compression_type</td>
+<td>no</td>
+<td>fallback to account settings</td>
+<td>lossy / lossless compression switch</td>
+</tr>
+<tr>
+<td>compression_level</td>
+<td>no</td>
+<td>fallback to account settings</td>
+<td>lossy compression quality settings (1-100)</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>no</td>
+<td>[]</td>
+<td>an array of styles to resize image. Each object contains <code>style</code> (string, user-defined style name), <code>strategy</code> (string), <code>width</code> (integer) and <code>height</code> (integer) attributes</td>
+</tr>
+</tbody></table>
+<h2 id='image-url-2'>Image URL</h2>
+<p>Optimise image by provide an URL to the image you want to optimise.</p>
+
+<blockquote>
+<p>Example request - compress image from URL</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/original_images"</span> <span class="se">\</span>
+     -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Authorization: Bearer your-api-token'</span> <span class="se">\</span>
+     -F <span class="s2">"image_url=https://your-website.com/images/image.png"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_type=lossy"</span> <span class="se">\</span>
+     -F <span class="s2">"compression_level=65"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image_url</td>
+<td>yes</td>
+<td></td>
+<td>provide <code>URL</code> to the image you want to compress</td>
+</tr>
+<tr>
+<td>compression_type</td>
+<td>no</td>
+<td>fallback to account settings</td>
+<td>lossy / lossless compression switch</td>
+</tr>
+<tr>
+<td>compression_level</td>
+<td>no</td>
+<td>fallback to account settings</td>
+<td>lossy compression quality settings (1-100)</td>
+</tr>
+<tr>
+<td>resize</td>
+<td>no</td>
+<td>[]</td>
+<td>an array of styles to resize image. Each object contains <code>style</code> (string, user-defined style name), <code>strategy</code> (string), <code>width</code> (integer) and <code>height</code> (integer) attributes</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+If HTTP Basic Authentication is enabled on your webserver simply include the username and password as part of the image URL like so: <code>https://username:password@my-website.com/images/image.png</code>
+</aside>
+<h2 id='response-2'>Response</h2>
+<blockquote>
+<p>Example response</p>
+
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"original_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">297412</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enqueued"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-29T15:52:22.589Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-29T15:52:22.596Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.crush.pics/v1/files/LX8Xhv3Z2T2dQDSRnrC3UBxg/photo.png"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Response body will contain a set of basic image attributes e.g <code>id</code>, <code>size</code>, <code>filename</code>, <code>status</code> and etc. Using the image <code>id</code> you can fetch results of image optimization and get compressed/resized images.</p>
+<h1 id='image-resizing'>Image Resizing</h1>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/compress"</span> <span class="se">\</span>
+     -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: multipart/form-data; boundary=ArRCoq7'</span> <span class="se">\</span>
+     -H <span class="s1">'Authorization: Bearer your-api-token'</span> <span class="se">\</span>
+     -d <span class="s1">$'{
+  "origin": "file",
+  "compression_type": "lossy",
+  "resize[][width]": "100",
+  "compression_level": "65",
+  "image_url": "http://your-website.com/images/image.png",
+  "resize[][style]": "thumb",
+  "resize[][height]": "100",
+  "resize[][width]": "320",
+  "resize[][height]": "crop",
+  "resize[][style]": "pico",
+  "resize[][height]": "25",
+  "resize[][width]": "80",
+  "resize[][height]": "crop",
+}'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crop"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"thumb"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crop"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pico"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>You can use Crush.pics API resizing option to create thumbnails or preview images for your applications. Crush.pics will first resize the given image and then optimize it. The resize option needs a few parameters to be passed, such as the desired width and/or height, as well as a mandatory strategy property.</p>
+<h1 id='image-conversion'>Image Conversion</h1>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
+-X POST <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+--form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png","convert": {"format": "jpeg", "background": "#ffffff"} }'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"convert"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"background"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>If you want to convert image to different type/format, you can do it by passing <code>convert</code> object in your request JSON.</p>
+<h3 id='convert-parameters'>Convert Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -336,106 +668,167 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>format</td>
+<td></td>
+<td>Desired image format you wish to convert your image into. This can accept one of the following values: <code>jpeg</code>, <code>png</code> or <code>gif</code>.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>background</td>
+<td>#ffffff</td>
+<td>If you convert from transparent file formats (PNG or GIF) into fully opaque format like JPEG, you need to specify background color. The background property can be passed in HEX notation (for eg: <code>&quot;#000000&quot;</code>).</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<h1 id='multiple-images'>Multiple Images</h1>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example request</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
+-X POST <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+--form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png","convert": {"format": "jpeg", "background": "#ffffff"} }'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"small"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"medium"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Example response:</p>
+
+<p>HTTP/1.1 200 OK</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="s2">"success"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+  <span class="s2">"results"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"small"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"crushed_url"</span><span class="p">:</span> <span class="s2">"https://api.crush.pics/download/3e2708872ead4dbdb7e911721a0bd420.png"</span><span class="p">,</span>
+      <span class="s2">"original_file_size"</span><span class="p">:</span> <span class="mi">426781</span><span class="p">,</span>
+      <span class="s2">"crushed_file_size"</span><span class="p">:</span> <span class="mi">203187</span><span class="p">,</span>
+      <span class="s2">"file_saved_bytes"</span><span class="p">:</span> <span class="mi">223594</span><span class="p">,</span>
+      <span class="s2">"original_width"</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span>
+      <span class="s2">"original_height"</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
+      <span class="s2">"crushed_width"</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+      <span class="s2">"crushed_height"</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+      <span class="s2">"image_type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
+    <span class="p">},</span>
+    <span class="s2">"medium"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"crushed_url"</span><span class="p">:</span> <span class="s2">"https://api.crush.pics/download/ba34f15cd34543fcbbe62c13595a086f.png"</span><span class="p">,</span>
+      <span class="s2">"original_file_size"</span><span class="p">:</span> <span class="mi">426781</span><span class="p">,</span>
+      <span class="s2">"crushed_file_size"</span><span class="p">:</span> <span class="mi">203187</span><span class="p">,</span>
+      <span class="s2">"file_saved_bytes"</span><span class="p">:</span> <span class="mi">223594</span><span class="p">,</span>
+      <span class="s2">"original_width"</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span>
+      <span class="s2">"original_height"</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
+      <span class="s2">"crushed_width"</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+      <span class="s2">"crushed_height"</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+      <span class="s2">"image_type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
+    <span class="p">},</span>
+    <span class="s2">"large"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"crushed_url"</span><span class="p">:</span> <span class="s2">"https://api.crush.pics/download/19805cbee6c543a78514a2e4424964e4.png"</span><span class="p">,</span>
+      <span class="s2">"original_file_size"</span><span class="p">:</span> <span class="mi">426781</span><span class="p">,</span>
+      <span class="s2">"crushed_file_size"</span><span class="p">:</span> <span class="mi">203187</span><span class="p">,</span>
+      <span class="s2">"file_saved_bytes"</span><span class="p">:</span> <span class="mi">223594</span><span class="p">,</span>
+      <span class="s2">"original_width"</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span>
+      <span class="s2">"original_height"</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
+      <span class="s2">"crushed_width"</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+      <span class="s2">"crushed_height"</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+      <span class="s2">"image_type"</span><span class="p">:</span> <span class="s2">"image/png"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+<p>Crush.pics API allows you to upload a single image and get back up to ten separate sizes, incorporating different resizing strategies, within a single response.</p>
+
+<p>To use multi-resize feature, you will need to add an array of objects as value to the resize param. Each object must contain an unique id, together with a strategy, and the parameters specific to that strategy. The id can either be a string or a number, bearing in mind that numbers will get coerced to a string for the response. On right, you can see example multi-resize object requesting three different sizes</p>
+<h2 id='resize-object-parameters'>Resize object parameters</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
+-X POST <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+--form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png",   "resize": [{"id": "small", "width": "150", "height": "150", "quality": 65 }, {"id": "medium", "width": "300", "height": "300", "quality": 75 }, {"id": "large", "width": "600", "height": "600", "lossy": false } ] }'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"small"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"medium"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quality"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossy"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>By default, each resize object inherits certain values from the top level of the request - namely the values of the lossy, quality. However, those values can be overridden per resize object. For example, when requesting JPEG outputs you can specify different quality values per each output.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<p>Below are several examples of overriding global request properties within resize objects:</p>
+<h1 id='preserve-metadata'>Preserve Metadata</h1>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example request</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
+-X POST <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+--form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png", "preserve_meta": [ "orientation", "date", "copyright", "profile" ] }'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"preserve_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"orientation"</span><span class="p">,</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="s2">"copyright"</span><span class="p">,</span><span class="w"> </span><span class="s2">"profile"</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
+<p>By default Crush.pics API will strip all the metadata found in an image to make the image file as small as it is possible, and in both lossy and lossless modes. Entries like EXIF, XMP and IPTC tags, colour profile information, etc. will be stripped altogether.</p>
+
+<p>In order to preserve metadata, add an additional preserve_meta array to your JSON request with list of properties you want to preserve</p>
+<h1 id='image-orientation'>Image Orientation</h1>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.crush.pics/v1/compress <span class="se">\</span>
+-X POST <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+--form <span class="nv">data</span><span class="o">=</span><span class="s1">'{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png", "auto_rotate": "true" }'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-api-key"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com/images/image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"auto_rotate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>If you want auto-rotate images using EXIF orientation tags, add <code>&quot;auto_rotate&quot;: true</code> to your request</p>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The Crush.pics API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -445,7 +838,7 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request sucks.</td>
+<td>Bad Request -- Your request is invalid (Usually invalid JSON).</td>
 </tr>
 <tr>
 <td>401</td>
@@ -453,35 +846,27 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- When your account is suspended.</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>413</td>
+<td>Request Entity Too Large -- Sending a file larger than your plan allows.</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>415</td>
+<td>Unsupported Media Type -- Sending an unsupported image type</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>422</td>
+<td>Unprocessable Entity -- Sending invalid JSON properties</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re sending too many requests at the same time.</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error -- We had a problem with our server or any other unexpected server error. Try again later.</td>
 </tr>
 <tr>
 <td>503</td>
@@ -492,10 +877,8 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
+                <a href="#" data-language-name="json">json</a>
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
