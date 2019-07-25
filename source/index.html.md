@@ -275,7 +275,6 @@ curl -X "POST" "https://api.crush.pics/v1/compress" \
      -H 'Content-Type: multipart/form-data; boundary=ArRCoq7' \
      -H 'Authorization: Bearer your-api-token' \
      -d $'{
-  "origin": "file",
   "compression_type": "lossy",
   "resize[][width]": "100",
   "compression_level": "65",
@@ -298,13 +297,11 @@ curl -X "POST" "https://api.crush.pics/v1/compress" \
     {
       "width": 320,
       "height": 100,
-      "strategy": "crop",
       "style": "thumb"
     },
     {
       "width": 80,
       "height": 25,
-      "strategy": "crop",
       "style": "pico"
     }
   ]
@@ -313,132 +310,3 @@ curl -X "POST" "https://api.crush.pics/v1/compress" \
 ```
 
 You can use Crush.pics API resizing option to create thumbnails or preview images for your applications. Crush.pics will first resize the given image and then optimize it. The resize option needs a few parameters to be passed, such as the desired width and/or height, as well as a mandatory strategy property.
-
-# Multiple Images
-
-> Example request
-
-```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
--H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png","convert": {"format": "jpeg", "background": "#ffffff"} }'
-```
-
-```json
-{
-  "api_key": "your-api-key",
-  "image_url": "http://your-website.com/images/image.png",
-  "resize": [
-    {
-      "id": "small",
-      "width": "150",
-      "height": "150"
-    },
-    {
-      "id": "medium",
-      "width": "300",
-      "height": "300"
-    },
-    {
-      "id": "large",
-      "width": "600",
-      "height": "600"
-    },
-
-  ]
-}
-
-```
-
-> Example response:
-
-> HTTP/1.1 200 OK
-
-```javascript
-{
-  "success": true,
-
-  "results": {
-    "small": {
-      "crushed_url": "https://api.crush.pics/download/3e2708872ead4dbdb7e911721a0bd420.png",
-      "original_file_size": 426781,
-      "crushed_file_size": 203187,
-      "file_saved_bytes": 223594,
-      "original_width": 640,
-      "original_height": 480,
-      "crushed_width": 150,
-      "crushed_height": 150,
-      "image_type": "image/png"
-    },
-    "medium": {
-      "crushed_url": "https://api.crush.pics/download/ba34f15cd34543fcbbe62c13595a086f.png",
-      "original_file_size": 426781,
-      "crushed_file_size": 203187,
-      "file_saved_bytes": 223594,
-      "original_width": 640,
-      "original_height": 480,
-      "crushed_width": 300,
-      "crushed_height": 300,
-      "image_type": "image/png"
-    },
-    "large": {
-      "crushed_url": "https://api.crush.pics/download/19805cbee6c543a78514a2e4424964e4.png",
-      "original_file_size": 426781,
-      "crushed_file_size": 203187,
-      "file_saved_bytes": 223594,
-      "original_width": 640,
-      "original_height": 480,
-      "crushed_width": 600,
-      "crushed_height": 600,
-      "image_type": "image/png"
-    }
-  }
-}
-
-```
-
-Crush.pics API allows you to upload a single image and get back up to ten separate sizes, incorporating different resizing strategies, within a single response.
-
-To use multi-resize feature, you will need to add an array of objects as value to the resize param. Each object must contain an unique id, together with a strategy, and the parameters specific to that strategy. The id can either be a string or a number, bearing in mind that numbers will get coerced to a string for the response. On right, you can see example multi-resize object requesting three different sizes
-
-## Resize object parameters
-
-> Example request
-
-```shell
-curl https://api.crush.pics/v1/compress \
--X POST \
--H "Content-Type: application/json" \
---form data='{ "api_key": "your-api-key", "image_url": "http://your-website.com/images/image.png",   "resize": [{"id": "small", "width": "150", "height": "150", "quality": 65 }, {"id": "medium", "width": "300", "height": "300", "quality": 75 }, {"id": "large", "width": "600", "height": "600", "lossy": false } ] }'
-```
-
-```json
-{
-  "api_key": "your-api-key",
-  "image_url": "http://your-website.com/images/image.png",
-  "resize": [
-    {
-      "id": "small",
-      "width": "150",
-      "height": "150",
-      "quality": 65
-    },
-    {
-      "id": "medium",
-      "width": "300",
-      "height": "300",
-      "quality": 75
-    },
-    {
-      "id": "large",
-      "width": "600",
-      "height": "600",
-      "lossy": false
-    }
-  ]
-}
-```
-By default, each resize object inherits certain values from the top level of the request - namely the values of the lossy, quality. However, those values can be overridden per resize object. For example, when requesting JPEG outputs you can specify different quality values per each output.
-
-Below are several examples of overriding global request properties within resize objects:
