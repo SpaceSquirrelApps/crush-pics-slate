@@ -9,6 +9,7 @@ toc_footers:
   - <a href='#'>Sign Up for a API token</a>
 
 includes:
+  - webhooks
   - errors
 
 search: true
