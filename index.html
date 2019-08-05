@@ -234,24 +234,13 @@
               </ul>
           </li>
           <li>
-            <a href="#sign-up" class="toc-h1 toc-link" data-title="sign-up">Sign up</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#parameters" class="toc-h2 toc-link" data-title="parameters">Parameters</a>
-                  </li>
-                  <li>
-                    <a href="#response" class="toc-h2 toc-link" data-title="response">Response</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#authentication-2" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
             <a href="#account-details" class="toc-h1 toc-link" data-title="account-details">Account details</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#response-2" class="toc-h2 toc-link" data-title="response">Response</a>
+                    <a href="#response" class="toc-h2 toc-link" data-title="response">Response</a>
                   </li>
               </ul>
           </li>
@@ -259,10 +248,10 @@
             <a href="#update-account-settings" class="toc-h1 toc-link" data-title="update-account-settings">Update account settings</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#parameters-2" class="toc-h2 toc-link" data-title="parameters">Parameters</a>
+                    <a href="#parameters" class="toc-h2 toc-link" data-title="parameters">Parameters</a>
                   </li>
                   <li>
-                    <a href="#response-3" class="toc-h2 toc-link" data-title="response">Response</a>
+                    <a href="#response-2" class="toc-h2 toc-link" data-title="response">Response</a>
                   </li>
               </ul>
           </li>
@@ -276,7 +265,7 @@
                     <a href="#image-url" class="toc-h2 toc-link" data-title="image-url">Image URL</a>
                   </li>
                   <li>
-                    <a href="#response-4" class="toc-h2 toc-link" data-title="response">Response</a>
+                    <a href="#response-3" class="toc-h2 toc-link" data-title="response">Response</a>
                   </li>
               </ul>
           </li>
@@ -290,7 +279,7 @@
                     <a href="#image-url-2" class="toc-h2 toc-link" data-title="image-url">Image URL</a>
                   </li>
                   <li>
-                    <a href="#response-5" class="toc-h2 toc-link" data-title="response">Response</a>
+                    <a href="#response-4" class="toc-h2 toc-link" data-title="response">Response</a>
                   </li>
               </ul>
           </li>
@@ -301,7 +290,7 @@
             <a href="#dashboard" class="toc-h1 toc-link" data-title="dashboard">Dashboard</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#response-6" class="toc-h2 toc-link" data-title="response">Response</a>
+                    <a href="#response-5" class="toc-h2 toc-link" data-title="response">Response</a>
                   </li>
               </ul>
           </li>
@@ -312,7 +301,7 @@
                     <a href="#query-parameters" class="toc-h2 toc-link" data-title="query-parameters">Query Parameters</a>
                   </li>
                   <li>
-                    <a href="#response-7" class="toc-h2 toc-link" data-title="response">Response</a>
+                    <a href="#response-6" class="toc-h2 toc-link" data-title="response">Response</a>
                   </li>
               </ul>
           </li>
@@ -323,7 +312,7 @@
                     <a href="#query-parameters-2" class="toc-h2 toc-link" data-title="query-parameters">Query Parameters</a>
                   </li>
                   <li>
-                    <a href="#response-8" class="toc-h2 toc-link" data-title="response">Response</a>
+                    <a href="#response-7" class="toc-h2 toc-link" data-title="response">Response</a>
                   </li>
               </ul>
           </li>
@@ -378,113 +367,7 @@
 <li><code>lossy</code> with ability to set up compression level</li>
 <li><code>balanced</code></li>
 </ul>
-<h1 id='sign-up'>Sign up</h1>
-<blockquote>
-<p>Endpoint</p>
-</blockquote>
-<pre class="highlight plaintext"><code>https://api.crush.pics/v1/shop
-</code></pre>
-<blockquote>
-<p>HTTP method</p>
-</blockquote>
-<pre class="highlight plaintext"><code>POST
-</code></pre>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.crush.pics/v1/shop"</span> <span class="se">\</span>
-     -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-     -d <span class="s1">$'{
-  "compression_level_png": 70,
-  "compression_level_jpg": 70,
-  "compression_level_gif": 70,
-  "compression_type": "lossy",
-  "callback_url": "https://your.site/crush_api/webhook",
-  "login": "user@example.com"
-}'</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"compression_level_jpg"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"compression_level_png"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"compression_level_gif"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"callback_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your.site/crush_api/webhook"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>login</code></td>
-<td>string</td>
-<td>yes</td>
-<td>Unique user ID (email)</td>
-</tr>
-<tr>
-<td><code>compression_type</code></td>
-<td>string</td>
-<td>yes</td>
-<td><code>lossy</code> / <code>lossless</code> / <code>balanced</code> compression switch</td>
-</tr>
-<tr>
-<td><code>compression_level_jpg</code></td>
-<td>integer</td>
-<td>yes</td>
-<td>Lossy compression level for JPEG/JPG files</td>
-</tr>
-<tr>
-<td><code>compression_level_png</code></td>
-<td>integer</td>
-<td>yes</td>
-<td>Lossy compression level for PNG files</td>
-</tr>
-<tr>
-<td><code>compression_level_gif</code></td>
-<td>integer</td>
-<td>yes</td>
-<td>Lossy compression level for GIF files</td>
-</tr>
-<tr>
-<td><code>callback_url</code></td>
-<td>string</td>
-<td>yes</td>
-<td>URL for receiving webhook events</td>
-</tr>
-</tbody></table>
-<h2 id='response'>Response</h2>
-<blockquote>
-<p>Example response</p>
-
-<p>HTTP/1.1 200 OK</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"shop"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"compression_level_jpg"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"compression_level_png"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"compression_level_gif"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"charged_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next_charge_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12T15:04:27Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12T15:04:27Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"plan_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bytes"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000000</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quota_usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600688</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='authentication-2'>Authentication</h1>
+<h1 id='authentication-2'>Authentication</h1>
 <blockquote>
 <p>Endpoint</p>
 </blockquote>
@@ -526,7 +409,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <p>HTTP method</p>
 </blockquote>
 <pre class="highlight plaintext"><code>GET
-</code></pre><h2 id='response-2'>Response</h2>
+</code></pre><h2 id='response'>Response</h2>
 <blockquote>
 <p>Example response</p>
 
@@ -584,7 +467,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
   </span><span class="s2">"compression_level_gif"</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w">
   </span><span class="s2">"callback_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your.site/crush_api/webhook"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-2'>Parameters</h3>
+</span></code></pre><h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -624,7 +507,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <td>URL for receiving webhook events</td>
 </tr>
 </tbody></table>
-<h2 id='response-3'>Response</h2>
+<h2 id='response-2'>Response</h2>
 <blockquote>
 <p>Example response</p>
 
@@ -658,7 +541,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
   </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-3'>Parameters</h3>
+</span></code></pre><h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -743,7 +626,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
   </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-4'>Parameters</h3>
+</span></code></pre><h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -810,7 +693,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='response-4'>Response</h2>
+<h2 id='response-3'>Response</h2>
 <blockquote>
 <p>Example response</p>
 
@@ -880,7 +763,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
   </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-5'>Parameters</h3>
+</span></code></pre><h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -965,7 +848,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
   </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-6'>Parameters</h3>
+</span></code></pre><h3 id='parameters-5'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1036,7 +919,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 <aside class="notice">
 If HTTP Basic Authentication is enabled on your webserver simply include the username and password as part of the image URL like so: <code>https://username:password@my-website.com/images/image.png</code>
 </aside>
-<h2 id='response-5'>Response</h2>
+<h2 id='response-4'>Response</h2>
 <blockquote>
 <p>Example response</p>
 
@@ -1113,7 +996,7 @@ Crush.pics API does not support resizing only operations. All resizing operation
 <p>HTTP method</p>
 </blockquote>
 <pre class="highlight plaintext"><code>GET
-</code></pre><h2 id='response-6'>Response</h2>
+</code></pre><h2 id='response-5'>Response</h2>
 <blockquote>
 <p>Example response</p>
 
@@ -1186,7 +1069,7 @@ Crush.pics API does not support resizing only operations. All resizing operation
 <td>Image ID</td>
 </tr>
 </tbody></table>
-<h2 id='response-7'>Response</h2>
+<h2 id='response-6'>Response</h2>
 <blockquote>
 <p>Example response</p>
 
@@ -1252,7 +1135,7 @@ Crush.pics API does not support resizing only operations. All resizing operation
 <td>Page number</td>
 </tr>
 </tbody></table>
-<h2 id='response-8'>Response</h2>
+<h2 id='response-7'>Response</h2>
 <blockquote>
 <p>Example response</p>
 
