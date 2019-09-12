@@ -427,6 +427,7 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
     </span><span class="s2">"next_charge_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12T15:04:27Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12T15:04:27Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"callback_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your.site/crush_api/webhook"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"plan_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free"</span><span class="p">,</span><span class="w">
@@ -513,7 +514,29 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 
 <p>HTTP/1.1 200 OK</p>
 </blockquote>
-<h1 id='image-compression-synchronously'>Image compression (Synchronously)</h1>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"shop"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_level_jpg"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_level_png"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_level_gif"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"charged_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next_charge_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12T15:04:27Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12T15:04:27Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"callback_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your.site/crush_api/webhook"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"plan_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bytes"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quota_usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600688</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='image-compression-synchronously'>Image compression (Synchronously)</h1>
 <p>You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.</p>
 
 <blockquote>
@@ -938,7 +961,28 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-29T15:52:22.589Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-29T15:52:22.596Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.crush.pics/v1/files/LX8Xhv3Z2T2dQDSRnrC3UBxg/photo.png"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>HTTP/1.1 422 Unprocessable Entity</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"file"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"can't be blank"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"formatted_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File can't be blank"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"compression_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lossy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"compression_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Response body will contain a set of basic image attributes e.g <code>id</code>, <code>size</code>, <code>filename</code>, <code>status</code> and etc. Using the image <code>id</code> you can fetch results of image optimization and get compressed/resized images.</p>
@@ -1314,13 +1358,18 @@ Crush.pics API does not support resizing only operations. All resizing operation
   </span><span class="s2">"object_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shop"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shop_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscription_updated"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"micro"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"quota_usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1212121</span><span class="p">,</span><span class="w">
   </span><span class="s2">"charged_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-30T11:22:56Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"next_charge_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-30T11:22:56Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JN677WHBDWH8762"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"subscription_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JN677WHBDWH8762"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"plan_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bytes"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quota_usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">16388889</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h1 id='errors'>Errors</h1>
 <p>The Crush.pics API uses the following error codes:</p>
