@@ -80,12 +80,17 @@ Crush API does not try to read response body.
   "object_type": "shop",
   "shop_identifier": "user@example.com",
   "event": "subscription_updated",
-  "plan": "micro",
-  "quota_usage": 1212121,
   "charged_at": "2019-07-30T11:22:56Z",
   "next_charge_at": "2019-08-30T11:22:56Z",
   "subscription_id": "JN677WHBDWH8762",
   "subscription_status": "active",
   "customer_id": "JN677WHBDWH8762",
+  "plan_data": {
+    "code": "free",
+    "name": "Free",
+    "price": "$0.00",
+    "bytes": 25000000,
+    "quota_usage": 16388889
+  }
 }
 ```

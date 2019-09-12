@@ -116,6 +116,7 @@ GET
     "next_charge_at": null,
     "created_at": "2018-11-12T15:04:27Z",
     "updated_at": "2018-11-12T15:04:27Z",
+    "callback_url": "https://your.site/crush_api/webhook",
     "plan_data": {
       "code": "free",
       "name": "Free",
@@ -181,6 +182,31 @@ Parameter | Type | Required | Description
 > Example response
 
 > HTTP/1.1 200 OK
+
+```json
+{
+  "shop": {
+    "login": "user@example.com",
+    "email": null,
+    "compression_type": "lossy",
+    "compression_level_jpg": 85,
+    "compression_level_png": 85,
+    "compression_level_gif": null,
+    "charged_at": null,
+    "next_charge_at": null,
+    "created_at": "2018-11-12T15:04:27Z",
+    "updated_at": "2018-11-12T15:04:27Z",
+    "callback_url": "https://your.site/crush_api/webhook",
+    "plan_data": {
+      "code": "free",
+      "name": "Free",
+      "price": "$0.00",
+      "bytes": 25000000,
+      "quota_usage": 3600688
+    }
+  }
+}
+```
 
 # Image compression (Synchronously)
 
@@ -443,7 +469,29 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
     "created_at": "2018-06-29T15:52:22.589Z",
     "updated_at": "2018-06-29T15:52:22.596Z",
     "link": "https://api.crush.pics/v1/files/LX8Xhv3Z2T2dQDSRnrC3UBxg/photo.png"
-  }
+  },
+  "success": true
+}
+```
+
+> HTTP/1.1 422 Unprocessable Entity
+
+```json
+{
+  "message": {
+    "file": [
+      "can't be blank"
+    ]
+  },
+  "formatted_message": "File can't be blank",
+  "image": {
+    "compression_type": "lossy",
+    "compression_level": 65,
+    "size": null,
+    "file_type": null,
+    "filename": null
+  },
+  "success": false
 }
 ```
 
