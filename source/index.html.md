@@ -484,7 +484,7 @@ If HTTP Basic Authentication is enabled on your webserver simply include the use
     ]
   },
   "formatted_message": "File can't be blank",
-  "image": {
+  "original_image": {
     "compression_type": "lossy",
     "compression_level": 65,
     "size": null,
