@@ -226,6 +226,10 @@ POST
 
 ## Image Upload
 
+Optimise image with direct upload in POST request
+
+<aside class="notice">Please use `Content-Type: multipart/form-data` header instead of `Content-Type: application/json` if you upload image blob</aside>
+
 > Example Request
 
 ```shell
@@ -366,6 +370,8 @@ POST
 ## Image Upload
 
 Optimise image with direct upload in POST request
+
+<aside class="notice">Please use `Content-Type: multipart/form-data` header instead of `Content-Type: application/json` if you upload image blob</aside>
 
 > Example Request
 
