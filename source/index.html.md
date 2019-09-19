@@ -45,6 +45,8 @@ Crush.pics API support following compression types:
 
 # Authentication
 
+## Request
+
 > Endpoint
 
 ```
@@ -85,6 +87,8 @@ Important: Crush.pics API supports only <code>HTTPS</code> protocol. All HTTP re
 
 # Account details
 
+## Request
+
 > Endpoint
 
 ```
@@ -116,7 +120,16 @@ GET
     "next_charge_at": null,
     "created_at": "2018-11-12T15:04:27Z",
     "updated_at": "2018-11-12T15:04:27Z",
-    "callback_url": "https://your.site/crush_api/webhook",
+    "callback_urls": [
+      {
+        "id": 3,
+        "url": "https://test.com/wh"
+      },
+      {
+        "id": 4,
+        "url": "https://example.com/webhook"
+      }
+    ],
     "plan_data": {
       "code": "free",
       "name": "Free",
@@ -129,6 +142,8 @@ GET
 ```
 
 # Update account settings
+
+## Request
 
 > Endpoint
 
@@ -153,7 +168,6 @@ curl -X "POST" "https://api.crush.pics/v1/shop" \
   "compression_level_jpg": 70,
   "compression_level_gif": 70,
   "compression_type": "lossy",
-  "callback_url": "https://your.site/crush_api/webhook",
 }'
 ```
 
@@ -163,7 +177,6 @@ curl -X "POST" "https://api.crush.pics/v1/shop" \
   "compression_level_jpg": 70,
   "compression_level_png": 70,
   "compression_level_gif": 70,
-  "callback_url": "https://your.site/crush_api/webhook"
 }
 ```
 
@@ -175,7 +188,6 @@ Parameter | Type | Required | Description
 `compression_level_jpg ` | integer | no | Lossy compression level for JPEG/JPG files
 `compression_level_png ` | integer | no | Lossy compression level for PNG files
 `compression_level_gif ` | integer | no | Lossy compression level for GIF files
-`callback_url` | string | no | URL for receiving webhook events
 
 ## Response
 
@@ -196,7 +208,16 @@ Parameter | Type | Required | Description
     "next_charge_at": null,
     "created_at": "2018-11-12T15:04:27Z",
     "updated_at": "2018-11-12T15:04:27Z",
-    "callback_url": "https://your.site/crush_api/webhook",
+    "callback_urls": [
+      {
+        "id": 3,
+        "url": "https://test.com/wh"
+      },
+      {
+        "id": 4,
+        "url": "https://example.com/webhook"
+      }
+    ],
     "plan_data": {
       "code": "free",
       "name": "Free",
@@ -211,6 +232,8 @@ Parameter | Type | Required | Description
 # Image compression (Synchronously)
 
 You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.
+
+## Request
 
 > Endpoint
 
@@ -270,6 +293,8 @@ Parameter | Type | Required | Description
 ## Image URL
 
 Optimise image by provide an URL to the image you want to optimise.
+
+## Request
 
 > Example request
 
@@ -355,6 +380,8 @@ Response body will have optimization results containing a success property, orig
 
 You can send any JPEG, PNG, GIF or SVG image to the Crush.pics API and it will automatically detect the type of image and compress it. You can choose to upload a file or provide a URL to the image.
 
+## Request
+
 > Endpoint
 
 ```
@@ -372,6 +399,8 @@ POST
 Optimise image with direct upload in POST request
 
 <aside class="notice">Please use `Content-Type: multipart/form-data` header instead of `Content-Type: application/json` if you upload image blob</aside>
+
+## Request
 
 > Example Request
 
@@ -413,6 +442,8 @@ Parameter | Type | Required | Description
 ## Image URL
 
 Optimise image by provide an URL to the image you want to optimise.
+
+## Request
 
 > Example request
 
@@ -505,6 +536,8 @@ Response body will contain a set of basic image attributes e.g `id`, `size`, `fi
 
 # Image Resizing
 
+## Request
+
 > Example request
 
 ```shell
@@ -555,6 +588,8 @@ Crush.pics API does not support resizing only operations. All resizing operation
 
 
 # Dashboard
+
+## Request
 
 > Endpoint
 
@@ -620,6 +655,8 @@ GET
 
 # Image details
 
+## Request
+
 > Endpoint
 
 ```
@@ -680,6 +717,8 @@ Parameter | Type | Required | Description
 ```
 
 # List images
+
+## Request
 
 > Endpoint
 
@@ -806,5 +845,178 @@ Parameter | Type | Required | Default | Description
     "per_page": 10,
     "count": 10
   }
+}
+```
+
+# List callback urls
+
+## Request
+
+> Endpoint
+
+```
+https://api.crush.pics/v1/callback_urls
+```
+
+> HTTP method
+
+```
+GET
+```
+
+> Example Request
+
+```shell
+curl -X "GET" "https://api.crush.pics/v1/callback_urls/1" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: application/json' \
+     -H 'Authorization: Bearer your-api-token'
+```
+
+## Response
+
+> Example response
+
+> HTTP/1.1 200 OK
+
+```json
+{
+  "callback_urls": [
+    {
+      "id": 4,
+      "url": "https://test.com/wh"
+    }
+  ]
+}
+```
+
+# Add callback url
+
+## Request
+
+> Endpoint
+
+```
+https://api.crush.pics/v1/callback_urls
+```
+
+> HTTP method
+
+```
+POST
+```
+
+> Example Request
+
+```shell
+curl -X "POST" "https://api.crush.pics/v1/callback_urls" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: application/json' \
+     -H 'Authorization: Bearer your-api-token' \
+     -d '{"url": "https://example.com/webhook"}'
+```
+
+```json
+{
+  "url": "https://example.com/webhook"
+}
+```
+
+### Parameters
+
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+`url` | string | yes |  | URL (HTTPS only)
+
+## Response
+
+> Example response
+
+> HTTP/1.1 200 OK
+
+```json
+{
+  "callback_url": {
+    "id": 7,
+    "url": "https://example.com/webhook"
+  }
+}
+```
+
+> HTTP/1.1 422 Unprocessable Entity
+
+```json
+{
+  "message": {
+    "url": [
+      "has already been taken"
+    ]
+  },
+  "formatted_message": "Url has already been taken"
+}
+```
+
+> HTTP/1.1 422 Unprocessable Entity
+
+```json
+{
+  "message": {
+    "url": [
+      "is invalid"
+    ]
+  },
+  "formatted_message": "Url is invalid"
+}
+```
+
+
+# Remove callback url
+
+## Request
+
+> Endpoint
+
+```
+https://api.crush.pics/v1/callback_urls/:id
+```
+
+> HTTP method
+
+```
+DELETE
+```
+
+> Example Request
+
+```shell
+curl -X "DELETE" "https://api.crush.pics/v1/callback_urls/1" \
+     -H 'Accept: application/json' \
+     -H 'Content-Type: application/json' \
+     -H 'Authorization: Bearer your-api-token'
+```
+
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- |-------- | -----------
+`id` | integer | yes | Custom callback ID
+
+## Response
+
+> Example response
+
+> HTTP/1.1 200 OK
+
+```json
+```
+
+> Example response
+
+> HTTP/1.1 404 OK
+
+```json
+{
+  "status": 404,
+  "error": "Not Found"
 }
 ```
